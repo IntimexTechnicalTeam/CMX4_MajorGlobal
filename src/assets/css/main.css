@@ -1,0 +1,32 @@
+body,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.clear {
+  clear: both;
+}
+
+.pc {
+  font-size: 16px;
+}
+
+.mobile {
+  font-size: 1.1rem;
+}

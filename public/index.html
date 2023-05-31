@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title>CMX4.0</title>
+    <meta name="description" content="泰美成立超過20年， 為6,000間超過50種行業的企業, 提供網頁設計，網站系統建立，及互聯網市場推廣服務。 泰美除了獲得進出口企業大獎-電子商貿獎，香港工商業獎，ICT資訊及通訊科技獎等等， 更為全行唯一獲得優質顧客服務大獎及全面關懷社會服務大獎的企業。">
+    <meta name="keywords" content="網上商店, 互聯網推廣, 網上貿易, 網上收款系統, 會員制系統, 科技券先導計劃, 手機版網站, 網上廣告, 網頁設計">
+    <meta property="og:image:secure_url" content="https://cntflorist.uat.intimex.hk/static/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="主頁 | 泰美商業科技有限公司" />
+    <meta property="og:url" content="https://www.intimex.hk/">
+    <meta property="og:title" content="主頁 | 泰美商業科技有限公司" />
+    <meta property="og:description" content="泰美成立超過20年， 為6,000間超過50種行業的企業, 提供網頁設計，網站系統建立，及互聯網市場推廣服務。 泰美除了獲得進出口企業大獎-電子商貿獎，香港工商業獎，ICT資訊及通訊科技獎等等， 更為全行唯一獲得優質顧客服務大獎及全面關懷社會服務大獎的企業。" />
+    <meta property="og:image" content="http://www.intimex.hk/images/logo.png" />
+    <meta name="twitter:card" content="Summary Card">
+    <meta name="twitter:image" content="http://www.intimex.hk/images/logo.png">
+    <meta name="twitter:title" content="主頁 | 泰美商業科技有限公司">
+    <meta name="twitter:description" content="泰美成立超過20年， 為6,000間超過50種行業的企業, 提供網頁設計，網站系統建立，及互聯網市場推廣服務。 泰美除了獲得進出口企業大獎-電子商貿獎，香港工商業獎，ICT資訊及通訊科技獎等等， 更為全行唯一獲得優質顧客服務大獎及全面關懷社會服務大獎的企業。">
+    <script type="application/javascript">
+      function getgeoip(json){
+        console.log(json,'json');
+        localStorage.setItem('IP', json.ip);
+      }
+    </script>
+    <!-- 引入组件库 -->
+    <script type="application/javascript" src="https://api.ip.sb/geoip?callback=getgeoip" rel=prefetch></script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but vue-ts doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <script>
+      function confirm() {
+        // eslint-disable-next-line no-new-object
+        var obj = new Object();
+        obj.FormId = $("#RpForm_Id").val();
+        obj.TotalAmount = Number($("#total").html());
+        obj.Signature = $('#Signature').attr("src");
+        obj.RnpSubmitDatas = getAnswers();
+        regAndPay.saveSubmit(obj).then(function(result){
+          if (result.data.Succeeded) {
+            router.push({ path: "/regnpay/result/" + result.data.ReturnValue });
+          } else {
+            alert(result.data.Message);
+          }
+        });
+      }
+    </script>
+
+    <% for (var i in htmlWebpackPlugin.options.JS_CDN) { %>
+      <script src="<%= htmlWebpackPlugin.options.JS_CDN[i] %>"></script>
+    <% } %>
+  </body>
+</html>
