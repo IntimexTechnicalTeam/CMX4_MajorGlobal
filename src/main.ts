@@ -4,7 +4,8 @@ import App from './App.vue';
 import router from './router';
 import Router from 'vue-router';
 import store from './store';
-// import ElementUI from 'element-ui';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import './plugins/element.js';
 import { MapRegion } from './assets/scripts/map-region';
 import { disDevices } from './assets/scripts/dis-devices';
@@ -19,7 +20,7 @@ import { FrontE } from '@/sdk/common/SysConst';
 // require styles
 import 'swiper/dist/css/swiper.css';
 // 引入css
-import 'element-ui/lib/theme-chalk/index.css';
+
 import './assets/css/font.css';
 
 // 引进Axios
@@ -28,6 +29,7 @@ import vueAxios from 'vue-axios';
 // // 引入多语言
 // import VueI18n from 'vue-i18n';
 import i18n from '@/lang';
+import 'animate.css';
 
 import Auth from './sdk/common/Auth';
 import('@/assets/css/main.css');
@@ -44,9 +46,10 @@ Object.keys(directives).forEach(k => Vue.directive(k, directives[k]));
 // Vue.component('ValidationProvider', ValidationProvider);
 Vue.use(Swiper);
 // modified file 'node_module/_vue@2.6.10@vue/types/plugin.d.ts'
-// Vue.use(ElementUI);
+
 Vue.use(vueAxios, axios, i18n);
 Vue.config.productionTip = false;
+Vue.use(ElementUI);
 
 Auth.GetToken().then(() => {
   import('./init').then(async (result) => {

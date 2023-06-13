@@ -49,7 +49,7 @@ export default class InsBanner extends Vue {
     //   nextEl: '.swiper-button-next',
     //   prevEl: '.swiper-button-prev'
     // },
-    autoHeight: true, // 高度随内容变化
+    // autoHeight: true, // 高度随内容变化
     observer: true, // 修改swiper自己或子元素时，自动初始化swiper
     observeParents: true // 修改swiper的父元素时，自动初始化swiper
   };
@@ -142,6 +142,7 @@ export default class InsBanner extends Vue {
 
   > img {
     width: 100%;
+    display: block;
   }
 }
 .swiper-container {
@@ -162,6 +163,7 @@ export default class InsBanner extends Vue {
 .swiper-slide {
   img {
     width: 100%;
+    display: block;
   }
 }
 </style>

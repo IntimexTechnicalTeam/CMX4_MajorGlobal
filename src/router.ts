@@ -1,12 +1,16 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import storage from './sdk/common/Storage';
 /* Layout */
 import Layout from '@/platform/index.vue';
 import RNPLayout from '@/platform/RNPLayout.vue';
 import i18n from '@/lang';
 
 Vue.use(Router);
-
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push (location) {
+  return (originalPush.call(this, location) as any).catch(err => { console.log(err); });
+};
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -81,6 +85,98 @@ const router = new Router({
       }]
     },
     {
+      path: '/account',
+      component: Layout,
+      children: [{
+        path: 'login',
+        name: 'login',
+        component: () => import('@/components/business/account/InsLoginN.vue')
+      },
+      {
+        path: 'Register',
+        name: 'Register',
+        component: () => import('@/components/business/account/InsRegister.vue')
+      },
+      {
+        path: 'RegisterSuccess',
+        name: 'RegisterSuccess',
+        component: () => import('@/components/business/account/Reg/InsRegSuccess.vue')
+      },
+      {
+        path: 'forgetPassword',
+        name: 'forgetPassword',
+        component: () => import('@/components/business/account/InsForgetPassword.vue')
+      },
+      {
+        path: 'ModifyPassword',
+        name: 'ModifyPassword',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/InsModifyPassword.vue')
+      },
+      {
+        path: 'memberInfo',
+        name: 'memberInfo',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/InsMemberInfo.vue')
+      },
+      {
+        path: 'ResetPwd/:id/:code',
+        name: 'notification',
+        component: () => import('@/components/business/account/InsResetPwd.vue')
+      },
+      {
+        path: 'MyApplications',
+        name: 'MyApplications',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/Personal/MyApplications.vue')
+      },
+      {
+        path: 'MyCPDRecords',
+        name: 'MyCPDRecords',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/Personal/MyCPDRecords.vue')
+      },
+      {
+        path: 'MyMailBox',
+        name: 'MyMailBox',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/Personal/MyMailBox.vue')
+      },
+      {
+        path: 'PersonalInformation',
+        name: 'PersonalInformation',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/Personal/PersonalInformation.vue')
+      },
+      {
+        path: 'MemberMeun',
+        name: 'MemberMeun',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/Personal/MemberMeun.vue')
+      }, {
+        path: 'MyMailBoxDetail/:id',
+        name: 'MyMailBox',
+        meta: {
+          requiresAuth: true // 是否进行登录验证
+        },
+        component: () => import('@/components/business/account/Personal/MyMailDetail.vue')
+      } ]
+    },
+    {
       path: '/event',
       component: Layout,
       children: [{
@@ -148,7 +244,26 @@ router.beforeEach((to, from, next) => {
     }, 500);
   } else {
     setTimeout(function () {
-      next();
+      if (to.path === '/account/login') {
+        if (storage.get('isLogin')) {
+          next({ path: '/home' });
+        }
+        next();
+      } else {
+        if (to.matched.some(record => record.meta.requiresAuth) && !storage.get('isLogin')) {
+          // router.push({ path: '/account/login' });
+          next({
+            path: '/account/login',
+            query: {
+              returnurl: to.path
+            }
+          });
+        } else if (to.matched.some(record => record.meta.requiresAuth) && storage.get('timeout') && storage.get('timeout') < new Date().getTime()) {
+          Vue.prototype.$Login(function () { next(); });
+        } else {
+          next();
+        }
+      }
     }, 200);
   }
 });

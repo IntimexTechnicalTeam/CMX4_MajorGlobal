@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="bodyback">
     <!-- <Header /> -->
     <ins-header />
 
@@ -55,15 +55,28 @@ export default class layout extends Vue {
 </style>
 
 <style lang="less">
+
 .pc {
   min-width: 1200px;
+  #bodyback{
+    width: 100%;
+    height: 100%;
+    background: url('/static/Images/indexback.png') bottom center;
+    background-size: cover;
+  }
 }
 
-// .mobile {
-//   /deep/ .sidebar-container {
-//     &.right {
-//       width: 100% !important;
-//     }
-//   }
-// }
+.mobile {
+  #bodyback{
+    width: 100%;
+    height: 100%;
+    background: url('/static/Images/indexMback.jpg') bottom center;
+    background-size: contain;
+  }
+  // /deep/ .sidebar-container {
+  //   &.right {
+  //     width: 100% !important;
+  //   }
+  // }
+}
 </style>

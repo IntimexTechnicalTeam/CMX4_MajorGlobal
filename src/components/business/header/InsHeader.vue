@@ -34,6 +34,8 @@ export default class InsHeader extends Vue {
 <style lang="less">
 .pc {
   #header {
+    box-shadow: 0 0 2px #908f8f;
+    background-color: #fff;
     .FixedHeader {
       .header-box {
         width: 100%;

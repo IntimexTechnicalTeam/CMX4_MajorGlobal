@@ -9,24 +9,52 @@ h4,
 h5,
 h6,
 div {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins-Regular';
 }
+
 ul,
 li {
-  list-style: none;
+    list-style: none;
 }
+
 a {
-  text-decoration: none;
+    text-decoration: none;
+    font-family: 'Poppins-Regular';
 }
+
+.locale {
+    font-family: 'SourceHanSans-Regular' !important;
+}
+
+.locale p,
+.locale a,
+.locale span {
+    font-family: 'SourceHanSans-Regular' !important;
+}
+
 .clear {
-  clear: both;
+    clear: both;
 }
 
 .pc {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .mobile {
-  font-size: 1.1rem;
+    font-size: 1.1rem;
+}
+
+.fix {
+    *zoom: 1;
+}
+
+.fix:after {
+    display: block;
+    content: "clear";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
 }

@@ -1,9 +1,9 @@
 <template>
-  <div class="cms-list">
-    <p class="catName" v-if="contents[0]">{{contents[0].Category.Name}}</p>
+  <div class="cms-list fade-in-hot">
+    <!-- <p class="catName" v-if="contents[0]">{{contents[0].Category.Name}}</p> -->
 
-    <el-row :gutter="isMobile ? 20 : 58" class="list">
-        <el-col :span="12" :sm="8" v-for="(cms,index) in contents" :key="index">
+    <!-- <el-row :gutter="isMobile ? 20 : 58" class="list">
+        <el-col :span="12" :sm="12" v-for="(cms,index) in contents" :key="index">
             <router-link :to="'/CMS/content/' + cms.Id">
                 <div class="cover">
                     <img :src="cms.Cover" />
@@ -14,7 +14,16 @@
                 </div>
             </router-link>
         </el-col>
-    </el-row>
+    </el-row> -->
+    <ul class="list">
+        <li v-for="(cms,index) in contents" :key="index">
+            <router-link :to="'/CMS/content/' + cms.Id">
+                <div class="cover">
+                    <img :src="cms.Cover" />
+                </div>
+            </router-link>
+        </li>
+    </ul>
   </div>
 </template>
 <script lang="ts">
@@ -36,9 +45,29 @@ export default class InsCmsList extends Vue {
   get isMobile () {
     return this.$store.state.isMobile;
   }
+  HotScroll () {
+    let fadeInElements = document.getElementsByClassName('fade-in-hot');
+    for (var i = 0; i < fadeInElements.length; i++) {
+      let elem = fadeInElements[i] as HTMLElement;
+      if (this.isElemVisible(elem)) {
+        elem.style.opacity = '1';
+      }
+    }
+  }
+  isElemVisible (el) {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top + 200; // 200 = buffer
+    var elemBottom = rect.bottom;
+    return elemTop < window.innerHeight && elemBottom >= 0;
+  }
 
   mounted () {
     this.getContents();
+    document.addEventListener('scroll', this.HotScroll);
+  }
+
+  destroyed () {
+    document.removeEventListener('scroll', this.HotScroll);
   }
 
   @Watch('isMobile', { deep: true })
@@ -51,7 +80,7 @@ export default class InsCmsList extends Vue {
 <style lang="less" scoped>
 .pc {
     .cms-list {
-        width: 89.2%;
+        width: 1200px;
         margin: 0 auto;
 
         .catName {
@@ -66,17 +95,23 @@ export default class InsCmsList extends Vue {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-
-            .el-col {
-                margin-bottom: 130px;
-
-                &:nth-child(3n) {
-                    margin-right: 0;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            li{
+                width: 590px;
+                float: left;
+                margin-bottom: 10px;
+                &:nth-child(2n){
+                    float: right;
                 }
+            }
+            .el-col {
+                margin-bottom: 20px;
 
                 .cover {
-                    margin-bottom: 26px;
+                    // margin-bottom: 26px;
                     img {
+                        display: block;
                         max-width: 100%;
                         max-height: 100%;
                     }
@@ -116,48 +151,30 @@ export default class InsCmsList extends Vue {
             justify-content: space-between;
             flex-wrap: wrap;
 
-            .el-col {
-                margin-bottom: 3.5rem;
-                list-style: none;
-
-                &:nth-child(2n) {
+            li{
+                width: 48%;
+                margin-right: 4%;
+                &:nth-child(2n){
                     margin-right: 0;
                 }
-
                 .cover {
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 1rem;
                     img {
-                        max-width: 100%;
-                        max-height: 100%;
-                    }
-                }
+                        width: 100%;
+                        display: block;
 
-                .info {
-                    .title {
-                        font-size: 1.5rem;
-                        color: #444444;
-                        margin-bottom: 0.5rem;
-                        font-weight: bold;
-                        letter-spacing: 0.5rem;
-
-                        &.en {
-                            letter-spacing: unset;
-                        }
-                    }
-
-                    .intro {
-                        font-size: 1.2rem;
-                        color: #444444;
-                        overflow: hidden;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        word-wrap: break-word;
-                        min-height: 2.22rem;
                     }
                 }
             }
         }
     }
 }
+.fade-in-hot {
+      opacity: 0;
+      transition: 1s all ease-out;
+      // transform: translate(0, -30px);
+      box-sizing: border-box;
+      // padding: 20px;
+      display: block;
+    }
 </style>

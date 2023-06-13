@@ -20,6 +20,8 @@ declare module 'vue/types/vue' {
         $LoadScript: any;
         vw : number;
         Shake : Function;
+        Reload : Function;
+        userAgent : string;
         FrontE : any;
     }
 }

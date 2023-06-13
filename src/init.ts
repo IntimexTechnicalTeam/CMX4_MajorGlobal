@@ -177,6 +177,24 @@ const util = {
     let timeout = d || 1000;
     if (this.delay === 0) { this.delay = setTimeout(fn, timeout); } else { clearTimeout(this.delay); this.delay = setTimeout(fn, timeout); }
   },
+  CheckMemberInfo (member) {
+    if (!member) return;
+    let keys = Object.keys(member);
+    let lang = Vue.prototype.$Storage.get('locale');
+    for (let index = 0; index < keys.length; index++) {
+      const element = keys[index];
+      if (element.match(/(FirstName)|(LastName)|(Mobile)|(BirthDate)/) && !member[element]) {
+        // util.Shake(() => {
+        //   Vue.prototype.$notify({
+        //     title: (language.messages[lang].Message as any).Message,
+        //     dangerouslyUseHTMLString: true,
+        //     message: '<strong>' + (language.messages[lang].Message as any).MemberInfo + '</strong>'
+        //   });
+        // }, 2000);
+        break;
+      }
+    }
+  },
   install: function (Vue) {
     Vue.prototype.$Inform = util.info;
     Vue.prototype.$Notice = util.notice;
@@ -191,6 +209,7 @@ const util = {
     Vue.prototype.$Storage = storage;
     Vue.prototype.Shake = util.Shake;
     Vue.prototype.FrontE = FrontE;
+    Vue.prototype.CheckMemberInfo = util.CheckMemberInfo;
     // 掛載方法（引入外部js）到實例
     Vue.prototype.$LoadScript = LoadScript;
 

@@ -1,21 +1,21 @@
 <template>
   <div class="siderbarContainer">
     <div id="sidebar" v-show="isShow">
-      <a href="javascript:void(0);" @click="toTop"
+      <a href="javascript:void(0);" @click="goToTop()"
         ><img src="/static/Images/sidebar/down.png"
       /></a>
-      <a href="javascript:void(0);" @click="show = !show"
+      <!-- <a href="javascript:void(0);" @click="show = !show"
         ><img src="/static/Images/sidebar/down2.png"
-      /></a>
-      <span v-show="show">
+      /></a> -->
+      <span>
         <a
           href="https://api.whatsapp.com/send?phone=85262891789&text=%E6%88%91%E6%83%B3%E6%9F%A5%E8%A9%A2%E4%B8%80%E4%B8%8B%E6%B3%B0%E7%BE%8E%E7%A7%91%E6%8A%80%E7%9A%84%E6%9C%8D%E5%8B%99"
           target="_blank"
           ><img src="/static/Images/sidebar/whatsapp.png"
         /></a>
-        <a href="javascript:;" class="livechat" @click="showLivechat"
+        <!-- <a href="javascript:;" class="livechat" @click="showLivechat"
           ><img src="/static/Images/sidebar/facebook.png"
-        /></a>
+        /></a> -->
         <a href="tel:85231050156" class="fb-button" target="_blank"
           ><img src="/static/Images/sidebar/phone.png"
         /></a>
@@ -91,6 +91,18 @@ export default class InsSidebar extends Vue {
     //     this.isShow = false;
     //   }
     // });
+  }
+  goToTop () {
+    let top = document.documentElement.scrollTop;
+
+    const timeTop = setInterval(() => {
+      document.documentElement.scrollTop = top -= 50;
+
+      if (top <= 0) {
+        clearInterval(timeTop);
+      }
+    }, 10);
+    this.show = false;
   }
 
   mounted () {
@@ -201,12 +213,12 @@ export default class InsSidebar extends Vue {
 }
 #sidebar {
   img {
-    width: 4rem;
+    width: 50px;
   }
   position: fixed;
-  right: 0 !important;
+  right: 10px !important;
   bottom: 60px;
-  width: 4rem;
+  width: 50px;
   // text-align: center;
   z-index: 997;
   line-height: 0;
@@ -234,5 +246,19 @@ export default class InsSidebar extends Vue {
 }
 a {
   line-height: 0;
+  margin-top: 10px;
+  display: block;
+}
+@media screen and (max-width: 640px) {
+  #sidebar {
+    width: 3rem;
+    right: 3px !important;
+    img{
+      width: 3rem;
+    }
+    a{
+      margin-top: 5px;
+    }
+  }
 }
 </style>

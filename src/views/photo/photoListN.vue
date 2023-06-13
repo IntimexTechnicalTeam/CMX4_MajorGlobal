@@ -26,7 +26,8 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import Swiper from 'swiper';
 import 'viewerjs/dist/viewer.css';
-import { component as Viewer } from 'v-viewer';
+// import { component as Viewer } from 'v-viewer';
+import Viewer from 'v-viewer/src/component.vue';
 @Component({ components: { Viewer } })
 export default class photoList extends Vue {
   imags = {};

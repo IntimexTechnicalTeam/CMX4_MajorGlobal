@@ -27,27 +27,27 @@ export default class InsLangSwitch extends Vue {
 <style scoped lang="less">
 .langSwitch {
     p {
-      display: inline-block;
-      padding: 0 10px;
+      // display: inline-block;
+      // padding: 0 10px;
       cursor: pointer;
       position: relative;
 
-      &:not(:last-child) {
-        &::after {
-          position: absolute;
-          content: '';
-          top: 1px;
-          right: 0;
-          height: 100%;
-          width: 2px;
-          display: block;
-          background-color: #fff;
-        }
-      }
+      // &:not(:last-child) {
+      //   &::after {
+      //     position: absolute;
+      //     content: '';
+      //     top: 1px;
+      //     right: 0;
+      //     height: 100%;
+      //     width: 2px;
+      //     display: block;
+      //     background-color: #fff;
+      //   }
+      // }
 
-      &:last-child {
-        padding-right: 0;
-      }
+      // &:last-child {
+      //   padding-right: 0;
+      // }
     }
 }
 </style>

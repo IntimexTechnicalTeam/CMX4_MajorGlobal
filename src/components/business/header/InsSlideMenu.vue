@@ -101,7 +101,7 @@ export default class InsSlideMenu extends Vue {
   top: 0;
   height: 100%;
   position: fixed;
-  z-index: 999;
+  // z-index: 999;
 }
 
 .sidebar-container {
@@ -131,7 +131,7 @@ export default class InsSlideMenu extends Vue {
   }
 
   &.right {
-    top: 0;
+    top: 5rem;
     right: 0;
 
     &.hiddenMenu {

@@ -1,10 +1,21 @@
 <template>
     <div class="copyright">
-        <p>© Intimex {{year}} All Right Reserved* </p>
+        <div v-if="!isMobile">
+            <p>Copyright ©{{year}} Major Global Marketing Company Limited | powered by Eventizer </p>
 
-        <a target="_blank" href="http://intimex.hk">
-            <img src="/static/Images/footer-logo.png" />
-        </a>
+            <a target="_blank" href="https://eventizer.hk/">
+                <img src="/static/Images/footer-logo.png" />
+            </a>
+        </div>
+        <div v-else>
+            <p>
+                Copyright ©{{year}} Major Global Marketing Company Limited powered by Eventizer
+                <a target="_blank" href="https://eventizer.hk/">
+                    <img src="/static/Images/footer-logo.png" />
+                </a>
+            </p>
+
+        </div>
     </div>
 </template>
 <script lang="ts">
@@ -12,6 +23,10 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 @Component
 export default class InsCopyright extends Vue {
     year: number = 0;
+
+    get isMobile () {
+      return this.$store.state.isMobile;
+    }
 
     created () {
       let date = new Date();
@@ -21,16 +36,17 @@ export default class InsCopyright extends Vue {
 </script>
 <style lang="less" scoped>
 .copyright {
-    background-color: #535353;
+    // background-color: #535353;
 }
 
 .pc {
     .copyright {
         text-align: center;
         padding: 20px 0;
+        padding-top: 10px ;
         p {
-            color: #fff;
-            font-size: 14.8px;
+            color: #5a5a5a;
+            font-size: 14px;
             display: inline-block;
             vertical-align: middle;
         }
@@ -49,8 +65,8 @@ export default class InsCopyright extends Vue {
 
         p {
             display: inline-block;
-            color: #fff;
-            font-size: 1.2rem;
+            color: #5a5a5a;
+            font-size: 1rem;
             vertical-align: middle;
         }
 

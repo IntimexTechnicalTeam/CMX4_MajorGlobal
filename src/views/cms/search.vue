@@ -13,7 +13,7 @@
               <div class="cover" v-if="cms.Cover">
                   <div class="item-hover">
                  <div class="more">
-                  {{$t('Home.ReadMore')}}
+                  {{$t('Action.ViewMore')}}
                  </div>
                  <div class="mask"></div>
                  </div>
@@ -111,9 +111,11 @@ export default class insSearch extends Vue {
     position: relative;
         }
       .title {
-      color: #666666;
-     font-size: 1.2rem;
-     display: inline-block;
+          color: #ccc;
+          font-size: 18px;
+          display: inline-block;
+          border-left: #e6109e 3px solid;
+          text-indent: 5px;
 
        }
         .catContent {
@@ -154,12 +156,12 @@ export default class insSearch extends Vue {
                     }
         .introduce {
            .data {
-             color: #999999;
+             color: #ccc;
              font-size: 16px;
              }
              .titlename {
                 font-size: 16px;
-                 color: #627999;
+                 color: #e6109e;
                 margin-bottom: 0.5rem;
                font-weight: bold;
                  }
@@ -209,7 +211,7 @@ export default class insSearch extends Vue {
        .more {
           width: 145px;
           margin: 0 auto;
-         background: #e67d91;
+         background: #e6109e;
          color: #ffffff;
          vertical-align: middle;
          position: relative;
@@ -240,15 +242,15 @@ export default class insSearch extends Vue {
        -ms-flex-align: center;
         align-items: center;
        position: relative;
-       margin-top: 1rem
+       margin-top: 4rem
         }
       .title {
-      color: #666666;
-     border-left: #c93638 3px solid;
+      color: #cccccc;
+     border-left: #e6109e 3px solid;
      font-size: 1.4rem;
      text-indent: 5px;
      display: inline-block;
-     margin-left: 2.5%;
+     margin-left: 1rem;
 
        }
         .pic{
@@ -279,18 +281,19 @@ export default class insSearch extends Vue {
            }
            .introduce {
            .data {
-             color: #999999;
+             color: #ccc;
              font-size: 1.2rem;
              }
-             .titlename {
-                font-size: 1.5rem;
-                 color: #627999;
-                margin-bottom: 0.5rem;
-               font-weight: bold;
-                 }
+              .titlename {
+                  font-size: 1.3rem;
+                  line-height: 1.8rem;
+                  color: #e6109e;
+                  margin-bottom: 0.5rem;
+                  font-weight: bold;
+              }
             }
             a {
-                padding: 0.5rem;
+                padding: 0 1rem;
                color: #627999;
                 display: inline-block;
 
@@ -348,5 +351,9 @@ export default class insSearch extends Vue {
         }
     }
 }
-
+/deep/ .el-breadcrumb{
+  .el-breadcrumb__inner.is-link, .el-breadcrumb__inner{
+    color: #cccccc;
+  }
+}
 </style>

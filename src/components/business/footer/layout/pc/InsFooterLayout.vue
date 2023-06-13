@@ -1,37 +1,33 @@
 <template>
-    <div id="footer">
+    <div id="footer" :class="{'FontC':this.$Storage.get('locale') === 'C'}">
         <div class="footer-container">
             <div class="company-info">
-                <ul>
-                    <li class="footer-nav">
+                <!-- <div> -->
+                    <div class="footer-nav">
                         <ul>
-                            <li v-for="(n,index) in $store.state.footerMenus" :key="index">
-                            <!-- <router-link :to="n.Type === 0 ? n.Url : n.Type === 1 ? '/cms/catDetail/' + n.Value.Id : n.Type === 2 ? '/CMS/content/' + n.Value.Id : n.Type === 3 ? '/RegNPay/Form/' + n.Value.Id : n.Type === 4 ? '/product/CatProduct?catId=' + n.Value.Id : n.Type === 5 ? '/product/search?key=&attr=' + n.Value.Id : '/product/search?key=&attr=' + n.ParentId + '&attrId=' + n.Value.Id">{{n.Name}}</router-link> -->
-                            <a href="javascript:;" v-if="n.Type < 0">{{n.Name}}</a>
-                            <a href="javascript:;" v-else-if="n.Type === 0" @click="toUrl(n)">{{n.Name}}</a>
-                            <router-link :to="{path: To(n)}" v-else>{{n.Name}}</router-link>
-                            <ul>
-                                <li v-for="(c,index2) in n.Childs" :key="index2">
-                                    <a href="javascript:;" v-if="c.Type < 0">{{c.Name}}</a>
-                                    <a href="javascript:;" v-else-if="c.Type === 0" @click="toUrl(c)">{{c.Name}}</a>
-                                    <router-link :to="{path: To(c)}" v-else>{{c.Name}}</router-link>
+                            <li v-for="(item,index) in $store.state.footerMenus" :key="index" class="indexMeun">
+                                    <router-link :to="{path: To(item)}" v-if="item.Type > 0">{{item.Name}}</router-link>
+                                    <a href="javascript:;" @click="toUrl(item)" v-else>{{item.Name}}</a>
+                                    <ul v-if="item.Childs && item.Childs.length"  class="submeunMain" :class="'sub'+index">
+                                        <li v-for="(child,index2) in item.Childs" :key="index2">
+                                            <router-link :to="To(child)">{{child.Name}}</router-link>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                            </li>
                         </ul>
-                    </li>
-                    <li class="general-query">
+                    </div>
+                    <!-- <li class="general-query">
                         <p class="title">{{$t('Display.GeneralQuery')}}</p>
                         <p>(852) 3105-0156</p>
                         <p>info@ptx.hk</p>
-                    </li>
-                    <li class="office-hours">
+                    </li> -->
+                    <!-- <li class="office-hours">
                         <p>{{$t('Display.OfficeHours')}}：</p>
                         <p>{{$t('Display.Hour0')}}{{$t('Display.Hour1')}}</p>
                         <p>{{$t('Display.Hour2')}}</p>
                         <p>{{$t('Display.Hour3')}}</p>
-                    </li>
-                    <li class="address">
+                    </li> -->
+                    <!-- <li class="address">
                         <div class="footer-logo">
                             <img src="/static/Images/int-logo.png" />
                         </div>
@@ -39,8 +35,11 @@
                             <p>{{$t('DeliveryAddress.Address')}}：</p>
                             <p>{{$t('Display.AddrInfo')}}</p>
                         </div>
-                    </li>
-                </ul>
+                    </li> -->
+                <!-- </ul> -->
+                <div class="footerlogo">
+                    <router-link to='/'><img src="/static/Images/footerlogo.png" alt=""></router-link>
+                </div>
             </div>
             <ins-copyright />
         </div>
@@ -72,26 +71,54 @@ export default class InsFooterLayout extends Vue {
 
 <style scoped lang="less">
 #footer {
-  background-color: #535353;
+//   background-color: #535353;
 }
 .footer-container {
     .company-info {
-        width: 63.5%;
+        width: 1200px;
         min-width: 900px;
         margin: 0 auto;
-        padding: 70px 0 20px;
+        padding: 40px 0 0;
+        .footer-nav {
+                    width: 100%;
+                    > ul {
+                        display: flex;
+                        justify-content: center;
+                        > li {
+                            margin-bottom: 24px;
+
+                            a {
+                                font-size: 20px;
+                                color: #fff;
+                                text-transform: uppercase;
+                                font-family: 'PostNoBillsColombo-ExtraBold';
+                                padding: 0 40px;
+                            }
+
+                            > a {
+                                font-size: 20px;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+        .footerlogo{
+            text-align: center;
+        }
         > ul {
             display: flex;
             justify-content: center;
             > li {
                 position: relative;
                 color: #fff;
-                font-size: 16.5px;
+                font-size: 20px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 box-sizing: border-box;
-                max-width: 34%;
 
                 &:after {
                     content: "";
@@ -105,28 +132,6 @@ export default class InsFooterLayout extends Vue {
 
                 &:last-child::after {
                     width: 0;
-                }
-
-                &.footer-nav {
-                    width: 18%;
-                    > ul {
-                        > li {
-                            margin-bottom: 16px;
-                            a {
-                                font-size: 16px;
-                                color: #fff;
-                                text-decoration: underline;
-                            }
-
-                            > a {
-                                font-size: 18px;
-                            }
-
-                            &:last-child {
-                                margin-bottom: 0;
-                            }
-                        }
-                    }
                 }
 
                 &.general-query {
@@ -177,6 +182,13 @@ export default class InsFooterLayout extends Vue {
                 }
             }
         }
+    }
+}
+.FontC{
+    .company-info .footer-nav > ul > li > a{
+        font-family: 'SourceHanSans-Regular';
+        font-size: 18px;
+        padding: 0 60px;
     }
 }
 </style>

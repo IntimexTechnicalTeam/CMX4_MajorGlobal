@@ -7,18 +7,18 @@
                         <img :src="cms.Cover" alt=""/>
                     </div>
                     <div class="introduce">
-                        <p class="title">{{cms.Title}}</p>
                         <p class="createDate">{{cms.CreateDate}}</p>
-                        <p class="desc">{{cms.Desc}}</p>
-                        <p class="viewMore"><span>{{$t('Action.ViewDetail')}}</span></p>
+                        <p class="title">{{cms.Title}}</p>
+                        <!-- <p class="desc">{{cms.Desc}}</p> -->
+                        <!-- <p class="viewMore"><span>{{$t('Action.ViewDetail')}}</span></p> -->
                     </div>
                 </router-link>
             </li>
         </ul>
 
-        <div class="pager" v-if="pager.totalRecord > pager.pageSize">
+        <!-- <div class="pager" v-if="pager.totalRecord > pager.pageSize">
             <ins-page :total="pager.totalRecord" v-model="pager.currentPage" :pageNum="pager.pageSize"></ins-page>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -38,27 +38,23 @@ export default class InsCatLayout1 extends Vue {
 <style scoped lang="less">
 .pc {
     .cms-list {
-        margin: 50px 0;
+        margin: 30px 0;
         ul{
             display: flex;
             flex-wrap: wrap;
 
             >li{
-            width: 23%;
-            margin-right: 2.66%;
-            margin-bottom: 2.66%;
-            &:nth-child(4n){
-                margin-right: 0%!important;
+            width: 380px;
+            margin-right: 30px!important;
+            &:nth-child(3n){
+
+                margin-right: 0!important;
             }
             a{
                 display:block;
-                border:1px solid #eee;
                 transition: all .3s ease;
-            -o-transition: all .3s ease;
-            -webkit-transition: all .3s ease;
-            -moz-transition: all .3s ease;
                 &:hover{
-                border:1px solid  @base_color;
+                // border:1px solid  @base_color;
                 .introduce{
                     .title{
                     color: @base_color;
@@ -67,14 +63,14 @@ export default class InsCatLayout1 extends Vue {
                 }
             }
             .introduce{
-                width: 90%;
+                width: 100%;
                 margin: 0 auto;
                 padding-bottom: 20px;
                 .title{
                 font-size:18px;
-                padding-bottom: 10px;
-                border-bottom: 1px solid #eee;
-                color:#484848;
+                line-height: 24px;
+                // padding-bottom: 10px;
+                color:#cccccc;
                 margin-bottom: 10px;
                 text-overflow: -o-ellipsis-lastline;
                 overflow: hidden;
@@ -83,13 +79,14 @@ export default class InsCatLayout1 extends Vue {
                 -webkit-line-clamp: 2;
                 line-clamp: 2;
                 -webkit-box-orient: vertical;
-                max-height: 40px;
-                margin-top: 20px;
+                // max-height: 40px;
+                margin-top: 0;
+                font-family: 'Poppins-SemiBold';
                 }
                 .createDate{
-                font-size: 16px;
-                color:#000000;
-                padding-bottom: 10px;
+                font-size: 14px;
+                color:#666666;
+                padding-top: 10px;
                 }
                 .desc{
                 font-size: 14px;
@@ -118,8 +115,15 @@ export default class InsCatLayout1 extends Vue {
             }
             .cover{
                 width: 100%;
+                height: 240px;
+                border-radius: 3px;
+                overflow: hidden;
                 img{
                 width: 100%;
+                height: 240px;
+                object-fit: cover;
+                object-position: 50% 50%;
+                display: block;
                 }
             }
             }
@@ -137,13 +141,13 @@ export default class InsCatLayout1 extends Vue {
         width: 100%;
         //  float: left;
         //  margin-right: 2.66%;
-        margin-bottom: 3.75rem;
+        margin-bottom: 2rem;
         //  &:nth-child(4n){
         //    margin-right: 0%!important;
         //  }
         a{
             display:block;
-            border:1px solid #eee;
+            // border:1px solid #eee;
         //  transition: all .3s ease;
         // -o-transition: all .3s ease;
         // -webkit-transition: all .3s ease;
@@ -158,18 +162,19 @@ export default class InsCatLayout1 extends Vue {
         //  }
         }
         .introduce{
-            width: 90%;
+            width: 100%;
             margin: 0 auto;
             //  padding-bottom: 20px;
-            padding-bottom: 1.6rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #4d4d4d;
             .title{
             //  font-size:18px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            color:#484848;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            // font-weight: bold;
+            // padding-bottom: 10px;
+            // border-bottom: 1px solid #eee;
+            color:#e6109e;
+            // margin-bottom: 10px;
             text-overflow: -o-ellipsis-lastline;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -177,14 +182,16 @@ export default class InsCatLayout1 extends Vue {
             -webkit-line-clamp: 2;
             line-clamp: 2;
             -webkit-box-orient: vertical;
-            max-height: 40px;
-            margin-top: 20px;
+            line-height: 1.8rem;
+            // max-height: 40px;
+            // margin-top: 20px;
             }
             .createDate{
-            //  font-size: 16px;
-            font-size: 1.2rem;
-            color:#000000;
-            padding-bottom: 10px;
+                //  font-size: 16px;
+                font-size: 1.2rem;
+                color:#cccccc;
+                padding-bottom: 0.5rem;
+                padding-top: 0.5rem;
             }
             .desc{
             //  font-size: 14px;
@@ -218,8 +225,15 @@ export default class InsCatLayout1 extends Vue {
         }
         .cover{
             width: 100%;
+            height: 16rem;
+            border-radius: 3px;
+            overflow: hidden;
             img{
-            width: 100%;
+                width: 100%;
+                height: 16rem;
+                display: block;
+                object-fit: cover;
+                object-position: 50% 50%;
             }
         }
         }

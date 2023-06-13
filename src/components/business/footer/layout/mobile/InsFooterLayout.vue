@@ -3,29 +3,29 @@
     <div class="footer-box">
       <div class="content-box">
         <div class="footer-menu">
-          <Menu type="footer" :backColor="'#535353'" :textColor="'#fff'" :uniqueOpened="true" />
+          <Menu type="footer" :backColor="'transparent'" :textColor="'#fff'" :uniqueOpened="true" />
         </div>
-        <div class="general-query">
+        <!-- <div class="general-query">
           <p class="title">{{$t('Display.GeneralQuery')}}</p>
           <p>(852) 3105-0156</p>
           <p>info@ptx.hk</p>
-        </div>
-        <div class="office-hours">
+        </div> -->
+        <!-- <div class="office-hours">
           <p class="title">{{$t('Display.OfficeHours')}}：</p>
           <div>
             <p>{{$t('Display.Hour0')}}</p>
             <p>{{$t('Display.Hour1')}}{{$t('Display.Hour2')}}</p>
           </div>
           <p>{{$t('Display.Hour3')}}</p>
-        </div>
+        </div> -->
         <div class="address">
           <div class="footer-logo">
-              <img src="/static/Images/int-logo.png" />
+              <img src="/static/Images/footerlogo.png" />
           </div>
-          <div class="addr">
+          <!-- <div class="addr">
               <p>{{$t('DeliveryAddress.Address')}}：</p>
               <p>{{$t('Display.AddrInfo')}}</p>
-          </div>
+          </div> -->
         </div>
       </div>
       <ins-copyright />
@@ -65,7 +65,7 @@ export default class InsFooterLayout extends Vue {
 <style lang="less">
 #footer {
   .footer-menu {
-    padding: 3.8rem 0;
+    padding: 1rem 0;
 
     >ul.el-menu {
       border: 0 !important;
@@ -74,17 +74,21 @@ export default class InsFooterLayout extends Vue {
         height: auto;
         line-height: unset;
         padding: 0 !important;
-        border-top: 1px solid #e5e5e5;
+        border-top: 1px solid #4c4c4c;
+        background-color: transparent !important;
         > a {
           display: block;
-          padding: 1.5rem 1.5rem;
-          font-size: 1.5rem;
+          padding: 0.5rem 1.5rem;
+          padding-top: 1.5rem;
+          font-size: 1.8rem;
           text-align: center;
           color: #fff;
+          font-family: 'PostNoBillsColombo-ExtraBold';
+          text-transform: uppercase;
         }
 
-        &:last-child {
-          border-bottom: 1px solid #e5e5e5;
+        &:first-child {
+          border-top: none;
         }
       }
 
@@ -163,7 +167,7 @@ export default class InsFooterLayout extends Vue {
 <style scoped lang="less">
 #footer {
   .footer-box {
-    background-color: #535353;
+    // background-color: #535353;
     color: #fff;
 
     .content-box {
@@ -219,12 +223,16 @@ export default class InsFooterLayout extends Vue {
         .box();
         margin-bottom: 2.5rem;
         .footer-logo {
-          background: #fff;
+          // background: #fff;
           text-align: center;
-          height: 9rem;
+          // height: 9rem;
           display: flex;
           justify-content: center;
           align-items: center;
+          img{
+            width: 70%;
+            display: block;
+          }
         }
 
         .addr {

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import storage from './sdk/common/Storage';
+import { MemberResult } from './model/memberResult';
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
@@ -10,7 +11,11 @@ export default new Vuex.Store({
     headerMenus: [],
     footerMenus: [],
     showFixedHeader: false, // 是否處於顯示固定頭部狀態
-    isShowMenu: false
+    isShowMenu: false,
+    isLogin: Number(storage.get('isLogin')),
+    memberInfo: new MemberResult(),
+    user: '',
+    fontsize: 1
   },
   mutations: {
     setIsMobile (state, is) {
@@ -33,6 +38,24 @@ export default new Vuex.Store({
     },
     setShowFixedHeader (state, showFixedHeader) {
       state.showFixedHeader = showFixedHeader;
+    },
+    doLogin (state) {
+      state.isLogin = 1;
+      storage.set('isLogin', 1);
+    },
+    Logout (state) {
+      state.isLogin = 0;
+      state.user = '';
+      storage.set('isLogin', 0);
+    },
+    setUser (state, user) {
+      state.user = user;
+    },
+    setFontSize (state, fontsize) {
+      state.fontsize = fontsize;
+    },
+    setMemberInfo (state, profile) {
+      state.memberInfo = profile;
     }
   },
   actions: {
@@ -56,6 +79,18 @@ export default new Vuex.Store({
     },
     setShowFixedHeader: ({ commit }, showFixedHeader) => {
       commit('setShowFixedHeader', showFixedHeader);
+    },
+    setUser: ({ commit }, user) => {
+      commit('setUser', user);
+    },
+    doLogin: ({ commit }) => {
+      commit('doLogin');
+    },
+    Logout: (context, clean) => {
+      context.commit('Logout');
+    },
+    setMemberInfo (context, profile) {
+      context.commit('setMemberInfo', profile);
     }
   }
 });

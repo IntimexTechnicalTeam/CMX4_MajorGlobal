@@ -42,6 +42,13 @@ export default class App extends Vue {
   }
 
   mounted () {
+    this.$nextTick(() => {
+      if (this.$Storage.get('locale') === 'C') {
+        var element = document.body;
+        element.className = 'locale';
+      }
+    });
+
     Vue.prototype.$ShowLayer();
     setTimeout(() => { Vue.prototype.$HiddenLayer(); }, 2000);
   }
@@ -62,5 +69,9 @@ export default class App extends Vue {
   >.el-scrollbar__bar{
     opacity: 1!important;
   }
+}
+.el-message {
+  top: 6rem !important;
+  z-index: 100000 !important;
 }
 </style>

@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'PostNoBillsColombo-ExtraBold';
+    src: url('../fonts/PostNoBillsColombo-ExtraBold.otf') format('OpenType'), url('../fonts/PostNoBillsColombo-ExtraBold.ttf') format('truetype'), url('../fonts/PostNoBillsColombo-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('../fonts/Poppins-Regular.otf') format('OpenType'), url('../fonts/Poppins-Regular.ttf') format('truetype'), url('../fonts/Poppins-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../fonts/Poppins-SemiBold.otf') format('OpenType'), url('../fonts/Poppins-SemiBold.ttf') format('truetype'), url('../fonts/Poppins-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SourceHanSans-Medium';
+    src: url('../fonts/SourceHanSans-Medium.otf') format('OpenType'), url('../fonts/SourceHanSans-Medium.ttf') format('truetype'), url('../fonts/SourceHanSans-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SourceHanSans-Regular';
+    src: url('../fonts/SourceHanSans-Regular.otf') format('OpenType'), url('../fonts/SourceHanSans-Regular.ttf') format('truetype'), url('../fonts/SourceHanSans-Regular.woff') format('woff');
+}

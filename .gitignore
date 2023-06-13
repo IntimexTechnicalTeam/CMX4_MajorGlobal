@@ -20,6 +20,7 @@ yarn-error.log*
 *.sln
 *.sw?
 /.vs
+*.rar
 
 
 src/sdk/common/ApiAndAdminServer.ts
