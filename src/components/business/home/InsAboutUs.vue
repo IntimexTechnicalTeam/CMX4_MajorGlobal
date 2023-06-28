@@ -43,6 +43,7 @@ export default class CmxAboutUs extends Vue {
     }
     // document.removeEventListener('scroll', this.handleScroll);
   }
+
   isElemVisible (el) {
     var rect = el.getBoundingClientRect();
     var elemTop = rect.top + 200; // 200 = buffer
@@ -211,7 +212,7 @@ export default class CmxAboutUs extends Vue {
     }
 }
 .fade-in-hot {
-  opacity: 1;
+  opacity: 0;
   transition: 1s all ease-out;
   // transform: translate(0, -30px);
   box-sizing: border-box;

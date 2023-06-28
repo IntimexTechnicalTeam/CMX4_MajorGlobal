@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="DetailTitle" v-else>
-        <img :src="content.Cover" v-if="NewcateId != 40117 && content.Cover">
+        <img :src="content.Cover" v-if="NewcateId != 40117 && NewcateId != 40121 && content.Cover">
         <div class="TitleBg" v-else><div class="innerBoxText">{{content.Title}}</div></div>
     </div>
     <div class="CmsContent">

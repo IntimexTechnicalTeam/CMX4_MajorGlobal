@@ -188,7 +188,7 @@ export default class InsMenuLayout extends Vue {
             }
 
             >.el-submenu__title {
-                background-color: @base_color !important;
+                background-color: transparent !important;
             }
 
             > a {

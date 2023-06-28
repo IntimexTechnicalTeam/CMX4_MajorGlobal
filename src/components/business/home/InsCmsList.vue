@@ -17,7 +17,12 @@
     </el-row> -->
     <ul class="list">
         <li v-for="(cms,index) in contents" :key="index">
-            <router-link :to="'/CMS/content/' + cms.Id">
+            <a href="javascript:;" v-if="cms.Url" @click="toUrl(cms)">
+                <div class="cover">
+                    <img :src="cms.Cover" />
+                </div>
+            </a>
+            <router-link :to="'/CMS/content/' + cms.Id" v-else>
                 <div class="cover">
                     <img :src="cms.Cover" />
                 </div>
@@ -33,6 +38,14 @@ export default class InsCmsList extends Vue {
   @Prop({ default: '' }) private catKey!: string; // key值
 
   contents: object[] = [];
+
+  toUrl (n) {
+    if (!n.IsNewWin && n.Url) {
+      window.location.href = n.Url;
+    } else if (n.IsNewWin && n.Url) {
+      window.open(n.Url);
+    }
+  }
 
   // 获取关于cms内容列表
   getContents () {

@@ -1,6 +1,6 @@
 .RNPForm {
   &.default {
-    background-color: #f5f5f5;
+    background-color: transparent;
     padding: 1.5rem 0;
     /deep/ .FormMain{
       width: 96%;
@@ -22,7 +22,7 @@
         }
 
         #Anwers {
-          margin: 1rem 0;
+          margin:3rem 0;
 
           p[name="error"] {
             color: red;
@@ -451,22 +451,22 @@
           -moz-appearance: none;
           -ms-appearance:none;
           width: 100%;
-          height: 5.3rem;
+          height: 5rem;
           color: #fff;
           font-size: 1.8rem;
           outline: none;
           margin: 3.5rem 0 5rem;
           font-weight: 500;
           letter-spacing: 4px;
-          border: 1px solid #e0b34a;
+          border: 1px solid #cb0f8c;
           border-bottom-width: 7px;
-          background-color: #f9c851;
+          background-color: #ff11af;
           border-radius: 5px;
           cursor: pointer;
         } 
 
         .row.BottomBorder {
-          margin: 1rem 0 5rem;
+          // margin: 1rem 0 5rem;
           img {
             max-width: 100%;
           }
@@ -479,18 +479,23 @@
 
         > div {
           margin-bottom: 2rem;
+          
+        }
+        .title{
+          color: #fff;
+          font-size: 1.6rem;
         }
 
         .question {
-          font-size: 1.5rem;
+          font-size: 1.6rem;
           color: @base_color;
           margin-bottom: 0.8rem;
         }
 
         .anwer {
           p {
-            font-size: 1.5rem;
-            color: #373737;
+            font-size: 1.4rem;
+            color: #fff;
           }
         }
 
@@ -500,7 +505,7 @@
           -moz-appearance: none;
           -ms-appearance:none;
           width: 100%;
-          height: 5rem;
+          height: 4rem;
           outline: none;
           font-size: 1.5rem;
           background-color: @base_color;
@@ -509,11 +514,18 @@
           margin-bottom: 1rem;
 
           &:first-of-type {
-            margin-top: 5rem;
+            margin-top: 3rem;
           }
 
           &:last-of-type {
-            margin-bottom: 4rem;
+            margin-bottom: 0;
+          }
+        }
+      }
+      .to_vertical{
+        .TopBorder{
+          p, h1, h2, h3, h4, strong{
+            color: #fff;
           }
         }
       }
@@ -524,7 +536,7 @@
 .RNPResult {
   &.default {
     padding: 1.5rem 0;
-    background-color: #f5f5f5;
+    background-color: transparent;
 
     a {
       text-decoration: none;
@@ -536,6 +548,7 @@
       padding: 2rem 1.5rem;
       box-sizing: border-box;
       background-color: #fff;
+      margin-top: 3rem;
 
       .record-title {
         font-size: 1.8rem;

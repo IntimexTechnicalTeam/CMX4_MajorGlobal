@@ -38,9 +38,12 @@ export default class InsBanner extends Vue {
   bannerImg: string = '';
 
   swiperOption: object = {
-    // autoplay: {
-    //   disableOnInteraction: false
-    // },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    effect: 'fade',
+
     pagination: {
       el: '.swiper-pagination',
       clickable: true

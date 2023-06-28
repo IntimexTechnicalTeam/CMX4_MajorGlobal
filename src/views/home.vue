@@ -4,6 +4,7 @@
     <!-- <ins-calendar /> -->
     <!-- <br><br> -->
     <!-- <ins-full-calendar /> -->
+    <InsNew/>
     <ins-about-us />
     <cmx-cms-list catKey="SerItem" />
     <InsShare/>
@@ -33,6 +34,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component({
   components: {
     InsBanner: () => import('@/components/base/InsBanner.vue'),
+    InsNew: () => import('@/components/business/home/InsNew.vue'),
     InsAboutUs: () => import('@/components/business/home/InsAboutUs.vue'),
     InsShare: () => import('@/components/business/home/InsShare.vue'),
     CmxCmsList: () => import('@/components/business/home/InsCmsList.vue'),

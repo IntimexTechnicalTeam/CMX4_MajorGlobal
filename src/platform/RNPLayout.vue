@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
-    <ins-copyright />
+    <!-- <ins-copyright /> -->
   </div>
 </template>
 

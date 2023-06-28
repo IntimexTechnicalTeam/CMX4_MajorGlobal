@@ -1,14 +1,21 @@
 
 .RNPForm {
   &.default {
-    background-color: #f5f5f5;
+    background-color: transparent;
     padding: 30px 0;
+    margin-top: 70px;
     /deep/ .FormMain{
         width: 74%;
         min-width: 1100px;
         // width: 1400px;
         margin: 0 auto;
-
+        .to_vertical{
+          .TopBorder{
+            p, h1, h2, h3, h4, strong{
+              color: #fff;
+            }
+          }
+        }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -437,9 +444,9 @@
           margin: 15px 0 70px;
           font-weight: 600;
           letter-spacing: 4px;
-          border: 1px solid #e0b34a;
+          border: 1px solid #cb0f8c;
           border-bottom-width: 7px;
-          background-color: #f9c851;
+          background-color: #ff11af;
           border-radius: 5px;
           cursor: pointer;
         } 
@@ -463,15 +470,15 @@
         }
 
         .question {
-          font-size: 16px;
+          font-size: 20px;
           color: @base_color;
           margin-bottom: 5px;
         }
 
         .anwer {
           p {
-            font-size: 16px;
-            color: #373737;
+            font-size: 18px;
+            color: #fff;
           }
         }
 
@@ -497,11 +504,12 @@
 .RNPResult {
   &.default {
     padding: 30px;
-    background-color: #f5f5f5;
-    min-width: 1400px;
+    background-color: transparent;
+    min-width: 1200px;
+    margin-top: 70px;
 
     #rnp-main-content {
-      width: 1400px;
+      width: 1200px;
       margin: 0 auto;
       padding: 60px 125px;
       box-sizing: border-box;

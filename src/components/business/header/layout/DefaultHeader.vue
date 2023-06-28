@@ -5,7 +5,7 @@
         <div class="share">
             <ul>
               <li>
-                <a href="#"><img src="/static/Images/icon-FB.png" alt=""></a>
+                <a href="https://www.facebook.com/profile.php?id=100092606282477" target="_blank"><img src="/static/Images/icon-FB.png" alt=""></a>
               </li>
               <li>
                 <a href="#"><img src="/static/Images/icon-IG.png" alt=""></a>
@@ -47,7 +47,7 @@
           <div class="share">
             <ul>
                 <li>
-                  <a href="#"><img src="/static/Images/icon-FB.png" alt=""></a>
+                  <a href="https://www.facebook.com/profile.php?id=100092606282477" target="_blank"><img src="/static/Images/icon-FB.png" alt=""></a>
                 </li>
                 <li>
                   <a href="#"><img src="/static/Images/icon-IG.png" alt=""></a>
@@ -259,7 +259,7 @@ export default class DefaultHeader extends Vue {
         >ul {
           >li {
             width: auto;
-            padding: 0 20px;
+            padding: 0 9px;
             padding-bottom: 10px;
 
             a {
@@ -271,10 +271,10 @@ export default class DefaultHeader extends Vue {
                   text-transform: uppercase;
             }
             &:hover{
-              a{
+              >a{
                 color: #de1199;
               }
-              a::after{
+              >a::after{
                 content: '';
                 width: 100%;
                 height: 5px;
@@ -286,22 +286,24 @@ export default class DefaultHeader extends Vue {
               }
             }
             > ul {
-              left: calc(50% - 120px);
+              left: 50%;
+              transform: translateX(-50%);
             }
 
             ul {
-              width: 240px;
+              width: auto;
+              white-space: nowrap;
               border: 0;
-              box-shadow: 0 0 10px 0 @base_color;
+              box-shadow: 0 0 5px 0 @base_color;
               li {
                 > a {
-                  padding: 15px;
-                  color: #676767;
+                  padding: 15px 30px;
+                  color: #000;
                   font-size: 16px;
                 }
 
                 &:hover {
-                  background-color: @menu_hover;
+                  background-color: #de1199;
                   > a {
                     color: #fff;
                   }
@@ -316,7 +318,7 @@ export default class DefaultHeader extends Vue {
       /deep/ .nav_menu {
         > ul {
           > li{
-            padding: 0 46px;
+            padding: 0 32px;
             padding-bottom: 13px;
             &:last-child{
               padding-right: 0;
