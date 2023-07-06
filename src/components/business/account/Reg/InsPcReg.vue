@@ -5,7 +5,7 @@
           <div class="register">
               <div>
                 <div class="register_title">{{$t('Register.RegisterBtn')}}</div>
-                <p class="ExistingMembersTips">{{$t('Register.ExistingMembers')}}</p>
+                <!-- <p class="ExistingMembersTips">{{$t('Register.ExistingMembers')}}</p> -->
                 <InsForm ref="registerForm" v-model="registerForm">
                 <div class="register_half">
                     <InsInput2 :placeholder="$t('Register.UserFirstName')" width="48%" v-model="registerForm.firstName" />

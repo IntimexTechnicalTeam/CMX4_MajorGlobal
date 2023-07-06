@@ -8,7 +8,7 @@
               </ul>
             <div class="clear"></div>
           </div>
-         <p class="ExistingMembersTips">{{$t('Register.ExistingMembers')}}</p>
+         <!-- <p class="ExistingMembersTips">{{$t('Register.ExistingMembers')}}</p> -->
           <div class="register">
               <div>
                 <InsForm ref="registerForm" v-model="registerForm">
