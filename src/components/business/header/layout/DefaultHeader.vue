@@ -8,7 +8,7 @@
                 <a href="https://www.facebook.com/profile.php?id=100092606282477" target="_blank"><img src="/static/Images/icon-FB.png" alt=""></a>
               </li>
               <li>
-                <a href="#"><img src="/static/Images/icon-IG.png" alt=""></a>
+                <a href="https://www.instagram.com/majorglobal.hk/" target="_blank"><img src="/static/Images/icon-IG.png" alt=""></a>
               </li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
                   <a href="https://www.facebook.com/profile.php?id=100092606282477" target="_blank"><img src="/static/Images/icon-FB.png" alt=""></a>
                 </li>
                 <li>
-                  <a href="#"><img src="/static/Images/icon-IG.png" alt=""></a>
+                  <a href="https://www.instagram.com/majorglobal.hk/" target="_blank"><img src="/static/Images/icon-IG.png" alt=""></a>
                 </li>
               </ul>
           </div>

@@ -37,6 +37,12 @@ const router = new Router({
       component: () => import('@/views/building.vue')
     },
     {
+      path: '/vr',
+      name: 'vr',
+      component: () =>
+          import(/* webpackChunkName: "product" */ './components/service/InsVRTour.vue')
+    },
+    {
       path: '/regnpay',
       component: RNPLayout,
       children: [{

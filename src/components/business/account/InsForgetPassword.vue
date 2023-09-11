@@ -47,6 +47,7 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import sdk from '@/sdk/InstoreSdk';
+import { Form as ElForm, Input as ElInput, Message, FormItem, Button as ElButton } from 'element-ui';
 @Component({
   components: {
   }
@@ -89,6 +90,12 @@ export default class InsForgetPassword extends Vue {
               if (success) {
                 that.ResetPwd = !that.ResetPwd;
               }
+            },
+            function (success) {
+              Message({
+                message: success.Message,
+                type: 'error'
+              });
             }
           );
         } else {
