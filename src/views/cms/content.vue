@@ -30,7 +30,9 @@
 
           <!-- <h1 class="CmsContentTitle">{{content.Title}}</h1> -->
           <p v-html="content.Body"></p>
+          <InsPhotoGallery :photolist="photolist" v-if="hasPhotoGallery"/>
         </div>
+
       </div>
       <div class="clear"></div>
     </div>
@@ -41,7 +43,8 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 @Component({
   components: {
     Location: () => import('@/components/base/InsLocation.vue'),
-    RNPForm: () => import('@/views/regNPay/regNPayForm.vue')
+    RNPForm: () => import('@/views/regNPay/regNPayForm.vue'),
+    InsPhotoGallery: () => import('@/components/business/cms/InsPhotoGallery.vue')
   }
 })
 export default class InsCmsContent extends Vue {
@@ -51,9 +54,12 @@ export default class InsCmsContent extends Vue {
   NewcateId:string='';
   private ImgList: string[] = [];
   CateName: string = '';
+  photolist: object[] = [];
+  hasPhotoGallery: boolean = false;
 
   // 获取关于我们cms内容
   getContent () {
+    this.hasPhotoGallery = false;
     this.$Api.cms.getContentByDevice({ ContentId: this.id, IsMobile: this.isMobile }).then(result => {
       this.content = result.CMS;
       this.OtherPageImg = result.CMS.Cover;
@@ -68,6 +74,13 @@ export default class InsCmsContent extends Vue {
         (document.getElementsByName('twitter:description')[0] as any).content = result.CMS.SeoDesc;
         (document.getElementsByName('twitter:title')[0] as any).content = result.CMS.Title;
       });
+      for (var i = 0; i < result.CMS.CmsControl.length; i++) {
+        if (result.CMS.CmsControl.length > 0) {
+          this.hasPhotoGallery = true;
+          this.photolist = result.CMS.CmsControl[i].ControlImageLis;
+          break;
+        }
+      }
     });
   }
   getMap () {
